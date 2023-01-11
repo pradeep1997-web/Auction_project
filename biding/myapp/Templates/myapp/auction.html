@@ -1,0 +1,31 @@
+{% extends 'myapp/base.html' %}
+
+{% load static %}
+{% block content %}
+<div class="container">
+<h1 class="alert-primary"> Fill your Auction </h1>
+
+<div class="row">
+<div class="col-sm-10 shadow p-5 offset-sm-1 mt-5">
+
+     <h3 class="text-center"><u>Details of the Item</u></h3>
+     <p><b>Name :</b> {{data.name}}</p>
+     <p><b>Category :</b> {{data.category}}</p>
+     <p><b>Description about Item :</b> {{data.description}}</p>
+     <p><b>Current Price :</b> {{data.current_price}}</p>
+     <p><b>Max Price :</b> {{data.max_price}}</p>
+     <p><b>Image :</b> </p>
+     <img class="img-fluid img-thumbnail float-end mt-4" src="{{data.image.url}}" width="200" height="200">
+     <br><br>
+
+<form action="{% url 'bid' data.id %}" method="POST">
+     {% csrf_token %}
+     <p><b> Bid Amount : </b> </p>{{bid_form.bid_amount_field}}
+     <div class=" text-center">
+     <input type="submit" value="Bid" class="btn btn-secondary">
+          </div>
+</form>
+</div>
+</div>
+     </div>
+{% endblock content %}

@@ -1,0 +1,29 @@
+{% extends 'myapp/base.html' %}
+{% load static %}
+
+  {% block content %}
+
+<section class="container text-center">
+
+    <h1 class="text-center alert alert-primary">Grand Auction</h1>
+
+  <hr> <br>
+  <div class="row">
+      {% for data in data %}
+    <div class="col-md-3">
+        <div class="card">
+          <img class="card-img-top" src="{{data.image}}" alt="{{data.category}}" width="200" height="200">
+          <div class="card-body">
+            <h5 class="card-title ">
+             {{data.name}}
+            </h5>
+              <a href="{% url 'auction' data.id %}" class="btn btn-primary">Bid here</a>
+          </div>
+        </div>
+
+    </div>
+      {% endfor %}
+  </div>
+  </div>
+</section>
+    {% endblock content %}
